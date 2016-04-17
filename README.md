@@ -27,14 +27,14 @@ Usage
   conn.makeReadOnly(); // make tag "read only"
   ```
 
-    Notice you will need to use try-catch to catch thrown exceptions: 
-    `NfcDisconnectedException`, `NfcNotWritableException`, `NfcTextTooLargeException`, `IOException` and `FormatException`.
+  Notice you will need to use try-catch to catch thrown exceptions: 
+  `NfcDisconnectedException`, `NfcNotWritableException`, `NfcTextTooLargeException`, `IOException` and `FormatException`.
 
-    see full usage example on [GitHub][1].
+  see full usage example on [GitHub][1].
 
-    Some other included features:
-    * BeamActivity - used like NfcActivity, to implement 'Android Beam'.
-    * NfcTester object - used it's methods to check the device's NFC state.
+  Some other included features:
+  * BeamActivity - used like NfcActivity, to implement 'Android Beam'.
+  * NfcTester object - used it's methods to check the device's NFC state.
 
 Download
 --------
