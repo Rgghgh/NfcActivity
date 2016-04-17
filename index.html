@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>NfcActivity by Rgghgh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">NfcActivity</h1>
+      <h2 class="project-tagline">An Android library that makes NFC communication Simple.</h2>
+      <a href="https://github.com/Rgghgh/NfcActivity" class="btn">View on GitHub</a>
+      <a href="https://github.com/Rgghgh/NfcActivity/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Rgghgh/NfcActivity/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="nfcactivity" class="anchor" href="#nfcactivity" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NfcActivity</h1>
+
+<p>An Android library that makes NFC communication Simple.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>1) extend <code>NfcActivity</code>:</p>
+
+<div class="highlight highlight-source-java"><pre>  <span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">YourActivity</span> <span class="pl-k">extends</span> <span class="pl-e">NfcActivity</span></pre></div>
+
+<p>2) implement <code>OnNfcStart(NfcConnection conn)</code>:</p>
+
+<div class="highlight highlight-source-java"><pre>  @<span class="pl-smi">Override</span>
+  <span class="pl-k">public</span> <span class="pl-k">void</span> onNfcStart(<span class="pl-smi">NfcConnection</span> conn)
+  {
+      <span class="pl-c1">...</span>
+  }</pre></div>
+
+<p>3) Done! now you can use <code>NfcConnection</code> methods to manipulate NFC tags.</p>
+
+<div class="highlight highlight-source-java"><pre>  <span class="pl-smi">String</span> id <span class="pl-k">=</span> conn<span class="pl-k">.</span>getTagId(); <span class="pl-c">// get unique tag id</span>
+  <span class="pl-smi">String</span> data <span class="pl-k">=</span> conn<span class="pl-k">.</span>read(); <span class="pl-c">// get string data from tag</span>
+  conn<span class="pl-k">.</span>write(<span class="pl-s"><span class="pl-pds">"</span>Hello, World!<span class="pl-pds">"</span></span>); <span class="pl-c">// write string data to tag</span>
+  conn<span class="pl-k">.</span>write(<span class="pl-s"><span class="pl-pds">"</span>Hello, World!<span class="pl-pds">"</span></span>, <span class="pl-v">this</span>); <span class="pl-c">// write string data to tag + AAR</span>
+  conn<span class="pl-k">.</span>makeReadOnly(); <span class="pl-c">// make tag "read only"</span></pre></div>
+
+<p>Notice you will need to use try-catch to catch thrown exceptions: 
+  <code>NfcDisconnectedException</code>, <code>NfcNotWritableException</code>, <code>NfcTextTooLargeException</code>, <code>IOException</code> and <code>FormatException</code>.</p>
+
+<p>see full usage example on <a href="https://github.com/Rgghgh/NfcActivity/blob/master/app/src/main/java/com/rgghgh/nfcactivitydemo/MainActivity.java#L13">GitHub</a>.</p>
+
+<p>Some other included features:</p>
+
+<ul>
+<li>BeamActivity - used like NfcActivity, to implement 'Android Beam'.</li>
+<li>NfcTester object - used it's methods to check the device's NFC state.</li>
+</ul>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h2>
+
+<p>via Gradle:</p>
+
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.rgghgh.nfcactivity:nfcactivity:1.0<span class="pl-pds">'</span></span></pre></div>
+
+<p>or Maven:</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">dependency</span>&gt;
+  &lt;<span class="pl-ent">groupId</span>&gt;com.rgghgh.nfcactivity&lt;/<span class="pl-ent">groupId</span>&gt;
+  &lt;<span class="pl-ent">artifactId</span>&gt;nfcactivity&lt;/<span class="pl-ent">artifactId</span>&gt;
+  &lt;<span class="pl-ent">version</span>&gt;1.0&lt;/<span class="pl-ent">version</span>&gt;
+  &lt;<span class="pl-ent">type</span>&gt;pom&lt;/<span class="pl-ent">type</span>&gt;
+&lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>Copyright 2013 Square, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Rgghgh/NfcActivity">NfcActivity</a> is maintained by <a href="https://github.com/Rgghgh">Rgghgh</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
