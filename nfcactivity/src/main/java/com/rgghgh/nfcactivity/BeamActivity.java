@@ -1,6 +1,7 @@
 package com.rgghgh.nfcactivity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -9,14 +10,13 @@ import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import android.nfc.NfcEvent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 /**
  * Extend this in your activity to implement Android Beam functionality.
  * @since v1.0
  */
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public abstract class BeamActivity extends AppCompatActivity implements CreateNdefMessageCallback
+public abstract class BeamActivity extends Activity implements CreateNdefMessageCallback
 {
     private NfcAdapter adapter;
     private boolean bound;
@@ -82,7 +82,6 @@ public abstract class BeamActivity extends AppCompatActivity implements CreateNd
 
     /**
      * Manually invoke Android Beam to share data.
-     * @see NfcAdapter's invokeBeam();
      * @since v1.0
      */
     public void invokeBeam()

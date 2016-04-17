@@ -1,5 +1,6 @@
 package com.rgghgh.nfcactivity;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,14 +10,12 @@ import android.nfc.tech.MifareUltralight;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NfcA;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 /**
  * Extend this class in your activity to implement NFC communication functionality.
  * @since v1.0
  */
-public abstract class NfcActivity extends AppCompatActivity
+public abstract class NfcActivity extends Activity
 {
     private NfcAdapter adapter;
     private NfcTester tester;
