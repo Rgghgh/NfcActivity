@@ -17,7 +17,7 @@ Usage
       ...
   }
   ```
-3. Done! now you can use `NfcConnection` methods to manipulate NFC tags.
+3) Done! now you can use `NfcConnection` methods to manipulate NFC tags.
     
   ```java
   String id = conn.getTagId(); // get unique tag id
