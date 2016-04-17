@@ -2,7 +2,6 @@ package com.rgghgh.nfcactivitydemo;
 
 import android.nfc.FormatException;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.rgghgh.nfcactivity.NfcActivity;
@@ -31,6 +30,11 @@ public class MainActivity extends NfcActivity
     {
         super.onStart();
         runNfcTest(); // see below
+    }
+
+    public void setDisplay(String text)
+    {
+        this.tvDisplay.setText(text);
     }
 
     @Override
@@ -79,10 +83,5 @@ public class MainActivity extends NfcActivity
 
         if(!tester.hasNfcPermission()) // same as this.hasNfcPermission()
             setDisplay("NFC usage permission has not been granted.");
-    }
-
-    public void setDisplay(String text)
-    {
-        this.tvDisplay.setText(text);
     }
 }
