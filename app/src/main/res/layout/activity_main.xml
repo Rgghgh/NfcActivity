@@ -13,5 +13,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Hello World!" android:id="@+id/tvDisplay"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etInput" android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/tvDisplay" android:layout_marginTop="289dp"/>
 </RelativeLayout>
