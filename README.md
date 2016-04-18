@@ -40,7 +40,7 @@ Download
 --------
 via Gradle:
 ```groovy
-compile 'com.rgghgh.nfcactivity:nfcactivity:1.0'
+compile 'com.rgghgh.nfcactivity:nfcactivity:1.0.1'
 ```
 or Maven:
 ```xml
