@@ -47,7 +47,7 @@ or Maven:
 <dependency>
   <groupId>com.rgghgh.nfcactivity</groupId>
   <artifactId>nfcactivity</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
