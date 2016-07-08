@@ -1,6 +1,10 @@
 # NfcActivity
 An Android library that makes NFC communication Simple.
 
+#### whats new in 1.1?
+* Supports `AppCompatActivity` - optional `NfcAppCompatActivity` and `BeamAppCompatActivity`.
+* New `NfcBeamActivity` (and `NfcBeamAppCompatActivity`) - your Activities can now implement Nfc and Android Beam.
+
 Usage
 --------
 1) extend `NfcActivity`:
@@ -40,14 +44,14 @@ Download
 --------
 via Gradle:
 ```groovy
-compile 'com.rgghgh.nfcactivity:nfcactivity:1.0.1'
+compile 'com.rgghgh.nfcactivity:nfcactivity:1.1'
 ```
 or Maven:
 ```xml
 <dependency>
   <groupId>com.rgghgh.nfcactivity</groupId>
   <artifactId>nfcactivity</artifactId>
-  <version>1.0.1</version>
+  <version>1.1</version>
   <type>pom</type>
 </dependency>
 ```
