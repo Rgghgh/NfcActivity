@@ -1,14 +1,20 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.rgghgh.nfcactivity'
+version = '1.2'
+
 android {
-    compileSdkVersion 24
+    compileSdkVersion 23
     buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 24
-        versionCode 2
-        versionName "1.1"
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.2"
     }
     buildTypes {
         release {
@@ -20,6 +26,49 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.4.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavaDocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+}
+
+task generateJavaDocsJar(type: Jar) {
+    from generateJavaDocs.destinationDir
+    classifier 'javadoc'
+}
+generateJavaDocsJar.dependsOn generateJavaDocs
+
+bintray {
+    user = 'rgghgh'
+    key = ''
+    pkg {
+        repo = 'maven'
+        name = 'com.rgghgh.nfcactivity'
+
+        version {
+            name = '1.2'
+            desc = 'An Android library that make NFC communication Simple.'
+            released  = new Date()
+            vcsTag = '1.2'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Rgghgh/NfcActivity'
+        websiteUrl = 'http://dev.rgghgh.com/nfcactivity/'
+    }
+    configurations = ['archives']
+}
+
+artifacts {
+    archives generateJavaDocsJar
+    archives generateSourcesJar
 }

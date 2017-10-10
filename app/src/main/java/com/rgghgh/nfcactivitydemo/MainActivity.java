@@ -50,6 +50,7 @@ public class MainActivity extends NfcActivity
 
             conn.write("Hello, World!"); // write string data to tag
             conn.write("Hello, World!", this); // write string data to tag + application record
+            conn.writeUri("https://example.com"); // from 1.2: will make tag open example.com
             conn.makeReadOnly(); // make tag "read only"
         }
         catch (FormatException e)
