@@ -56,19 +56,9 @@ public final class NfcConnection
      */
     public void write(String text) throws NfcNotWritableException, NfcTextTooLargeException, IOException, FormatException
     {
-        if (!this.tag.isWritable())
-            throw new NfcNotWritableException();
-
-        NdefMessage msg = new NdefMessage(new NdefRecord[]{
+        this.flush(new NdefRecord[]{
                 NdefRecord.createTextRecord("en", text)
         });
-
-        if (msg.getByteArrayLength() > this.tag.getMaxSize())
-            throw new NfcTextTooLargeException();
-
-        this.tag.connect();
-        this.tag.writeNdefMessage(msg);
-        this.tag.close();
     }
 
     /**
@@ -85,20 +75,10 @@ public final class NfcConnection
      */
     public void write(String text, Context context) throws NfcNotWritableException, NfcTextTooLargeException, IOException, FormatException
     {
-        if (!this.tag.isWritable())
-            throw new NfcNotWritableException();
-
-        NdefMessage msg = new NdefMessage(new NdefRecord[]{
+        this.flush(new NdefRecord[]{
                 NdefRecord.createTextRecord("en", text),
                 NdefRecord.createApplicationRecord(context.getApplicationInfo().packageName)
         });
-
-        if (msg.getByteArrayLength() > this.tag.getMaxSize())
-            throw new NfcTextTooLargeException();
-
-        this.tag.connect();
-        this.tag.writeNdefMessage(msg);
-        this.tag.close();
     }
 
     /**
@@ -112,12 +92,25 @@ public final class NfcConnection
      */
     public void writeUri(String uri) throws NfcNotWritableException, NfcTextTooLargeException, IOException, FormatException
     {
+        this.flush(new NdefRecord[]{
+                NdefRecord.createUri(uri)
+        });
+    }
+
+    /**
+     * Function used to write an NdefRecord array onto an NFC tag.
+     * @param records NdefRecord's to be written.
+     * @throws NfcNotWritableException if the contacted tag is set to "Read Only"
+     * @throws NfcTextTooLargeException when the data given is too large for the contacted tag.
+     * @throws IOException Thrown if connection to nfc tag fails for some reason <b>OR</b> the action is canceled.
+     * @throws FormatException If the data on the card is malformed.
+     */
+    private void flush(NdefRecord[] records) throws NfcNotWritableException, NfcTextTooLargeException, IOException, FormatException
+    {
         if (!this.tag.isWritable())
             throw new NfcNotWritableException();
 
-        NdefMessage msg = new NdefMessage(new NdefRecord[]{
-                NdefRecord.createUri(uri)
-        });
+        NdefMessage msg = new NdefMessage(records);
 
         if (msg.getByteArrayLength() > this.tag.getMaxSize())
             throw new NfcTextTooLargeException();
