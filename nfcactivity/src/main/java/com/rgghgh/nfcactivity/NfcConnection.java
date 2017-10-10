@@ -102,6 +102,32 @@ public final class NfcConnection
     }
 
     /**
+     * Writes a uri record onto the contacted NFC tag.<br>
+     * The data is written in a way that it is readable by any other android app.
+     * @param uri the uri to be written on the tag.
+     * @throws NfcNotWritableException if the contacted tag is set to "Read Only"
+     * @throws NfcTextTooLargeException when the data given is too large for the contacted tag.
+     * @throws IOException Thrown if connection to nfc tag fails for some reason <b>OR</b> the action is canceled.
+     * @throws FormatException If the data on the card is malformed.
+     */
+    public void writeUri(String uri) throws NfcNotWritableException, NfcTextTooLargeException, IOException, FormatException
+    {
+        if (!this.tag.isWritable())
+            throw new NfcNotWritableException();
+
+        NdefMessage msg = new NdefMessage(new NdefRecord[]{
+                NdefRecord.createUri(uri)
+        });
+
+        if (msg.getByteArrayLength() > this.tag.getMaxSize())
+            throw new NfcTextTooLargeException();
+
+        this.tag.connect();
+        this.tag.writeNdefMessage(msg);
+        this.tag.close();
+    }
+
+    /**
      * this turns the contacted NFC tag to a "Read Only" tag.
      * this means the data stored on it currently can not be changed in any way.
      * @throws IOException throwm if the card is disconnected mid-action.
