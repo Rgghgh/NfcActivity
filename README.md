@@ -2,7 +2,7 @@
 An Android library that makes NFC communication Simple.
 
 #### whats new in 1.2?
-* Added `writeUri` to `NfcConnection` - can bo used to write URI records to NFC tags.
+* Added `writeUri` to `NfcConnection` - used to write URI records to NFC tags.
 
 #### whats new in 1.1?
 * Supports `AppCompatActivity` - optional `NfcAppCompatActivity` and `BeamAppCompatActivity`.
@@ -31,6 +31,7 @@ Usage
   String data = conn.read(); // get string data from tag
   conn.write("Hello, World!"); // write string data to tag
   conn.write("Hello, World!", this); // write string data to tag + AAR
+  conn.writeUri("https://example.com"); // from 1.2: tag will open the browser at example.com
   conn.makeReadOnly(); // make tag "read only"
   ```
 
