@@ -1,6 +1,9 @@
 # NfcActivity
 An Android library that makes NFC communication Simple.
 
+#### whats new in 1.2?
+* Added `writeUri` to `NfcConnection` - can bo used to write URI records to NFC tags.
+
 #### whats new in 1.1?
 * Supports `AppCompatActivity` - optional `NfcAppCompatActivity` and `BeamAppCompatActivity`.
 * New `NfcBeamActivity` (and `NfcBeamAppCompatActivity`) - your Activities can now implement Nfc and Android Beam.
