@@ -48,14 +48,14 @@ Download
 --------
 via Gradle:
 ```groovy
-compile 'com.rgghgh.nfcactivity:nfcactivity:1.1'
+compile 'com.rgghgh.nfcactivity:nfcactivity:1.2'
 ```
 or Maven:
 ```xml
 <dependency>
   <groupId>com.rgghgh.nfcactivity</groupId>
   <artifactId>nfcactivity</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
   <type>pom</type>
 </dependency>
 ```
