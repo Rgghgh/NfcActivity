@@ -1,38 +1,14 @@
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.1'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
-    }
-}
-
-plugins {
-    id "com.jfrog.bintray" version "1.5"
-}
-
-group = 'com.rgghgh.nfcactivity'
-version = '1.2'
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-    apply plugin: 'com.android.library'
-    apply plugin: 'com.github.dcendents.android-maven'
-}
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 24
-        versionCode 3
-        versionName "1.2"
+        versionCode 2
+        versionName "1.1"
     }
     buildTypes {
         release {
@@ -46,29 +22,4 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
-}
-
-bintray {
-    user = 'rgghgh'
-    key = ''
-    pkg {
-        repo = 'maven'
-        name = 'com.rgghgh.nfcactivity'
-
-        version {
-            name = '1.2'
-            desc = 'An Android library that make NFC communication Simple.'
-            released  = new Date()
-            vcsTag = '1.2'
-        }
-
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/Rgghgh/NfcActivity'
-        websiteUrl = 'http://dev.rgghgh.com/nfcactivity/'
-    }
-    configurations = ['archives']
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
 }
